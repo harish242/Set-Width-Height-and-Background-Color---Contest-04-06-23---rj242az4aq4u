@@ -35,7 +35,7 @@ const App = () => {
         <input
           id="width"
           type="number"
-          value={boxes.width}
+          value={width}
           onChange={HandleChange1}
         />
       </div>
@@ -44,7 +44,7 @@ const App = () => {
         <input
           id="height"
           type="number"
-          value={boxes.height}
+          value={height}
           onChange={HandleChange2}
         />
       </div>
@@ -53,14 +53,17 @@ const App = () => {
         <input
           id="backgroundColor"
           type="text"
-          value={boxes.backgroundColor}
+          value={backgroundColor}
           onChange={HandleChange3}
         />
       </div>
       <button className='create-btn' onClick={HandleClick}>Create Box</button>
       <div id="box-container">
         {boxes.map((data=>{
-          <div style={{width:data.width,height:data.heigth,backgroundColor:data.backgroundColor}}>
+        return  <div style={{width:`${data.width}px`,
+          height:`${data.height}px`,
+          backgroundColor:data.backgroundColor
+          }}>
 
           </div>
         }))}

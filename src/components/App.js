@@ -5,6 +5,27 @@ const App = () => {
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("");
+  const [boxes,setBoxes]=useState([])
+  const HandleClick=()=>{
+  const newBoxes={
+    width,
+    height,
+    backgroundColor
+  }
+  setBoxes([...boxes,newBoxes])
+  setWidth("")
+  setHeight("")
+  setBackgroundColor("")
+  }
+  const HandleChange1=(event)=>{
+    setWidth(event.target.value)
+  }
+  const HandleChange2=(event)=>{
+    setHeight(event.target.value)
+  }
+  const HandleChange3=(event)=>{
+    setBackgroundColor(event.target.value)
+  }
 
   return (
     <div id="main">
@@ -14,6 +35,8 @@ const App = () => {
         <input
           id="width"
           type="number"
+          value={boxes.width}
+          onChange={HandleChange1}
         />
       </div>
       <div>
@@ -21,6 +44,8 @@ const App = () => {
         <input
           id="height"
           type="number"
+          value={boxes.height}
+          onChange={HandleChange2}
         />
       </div>
       <div>
@@ -28,10 +53,18 @@ const App = () => {
         <input
           id="backgroundColor"
           type="text"
+          value={boxes.backgroundColor}
+          onChange={HandleChange3}
         />
       </div>
-      <button className='create-btn'>Create Box</button>
-      <div id="box-container"></div>
+      <button className='create-btn' onClick={HandleClick}>Create Box</button>
+      <div id="box-container">
+        {boxes.map((data=>{
+          <div style={{width:data.width,height:data.heigth,backgroundColor:data.backgroundColor}}>
+
+          </div>
+        }))}
+      </div>
     </div>
   );
 };
